@@ -1,15 +1,13 @@
 import praw
 
-from config.local import client_id, client_secret, user_agent
+from config.local import reddit_secrets
 
 _reddit = None
 
 
 def _connect():
     global _reddit
-    _reddit = praw.Reddit(client_id=client_id,
-                          client_secret=client_secret,
-                          user_agent=user_agent)
+    _reddit = praw.Reddit(**reddit_secrets.__dict__)
 
 
 def cats(amount):
